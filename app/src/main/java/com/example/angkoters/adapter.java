@@ -37,7 +37,7 @@ public class adapter extends RecyclerView.Adapter<adapter.ViewHolder> {
         holder.more.setOnClickListener(v -> {
             Intent intent = new Intent(context, DetailActivity.class);
             intent.putExtra("gambar", ruteAngkotItems.get(position).getGambarUrl());
-            intent.putExtra("lintasan", ruteAngkotItems.get(position).getLintasan());
+            intent.putExtra("rute", ruteAngkotItems.get(position).getLintasan());
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
         });

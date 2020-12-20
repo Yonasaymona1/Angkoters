@@ -64,4 +64,22 @@ public class MainActivity extends AppCompatActivity {
     private void initView() {
         rv = findViewById(R.id.rv);
     }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.alarm:
+                Intent intent = new Intent(MainActivity.this, AlarmActivity.class);
+                String mOrderMessage = null;
+                intent.putExtra(EXTRA_MESSAGE, mOrderMessage);
+                startActivity(intent);
+                return true;
+            default:
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<RuteAngkotItem> ruteAngkotItems;
     private adapter adapter;
     private RecyclerView rv;
+    private String sharedPrefFile = "com.example.angkoters";
+    private SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
         initView();
         ruteAngkotItems = new ArrayList<>();
         getData();
+        preferences = getSharedPreferences(sharedPrefFile,MODE_PRIVATE);
+
     }
 
     private void getData() {
@@ -81,5 +85,13 @@ public class MainActivity extends AppCompatActivity {
             default:
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        SharedPreferences.Editor preferencesEditor = preferences.edit();
+        preferencesEditor.apply();
     }
 }
